@@ -9,7 +9,7 @@ namespace ParallelTasks.Unit.Test
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        [InlineData(50)]
+        [InlineData(8)]
         public async Task InvokeParallelTasksValidTimeExecutionForPrallelInteration(int loopCounter)
         {
             // Act
@@ -22,7 +22,7 @@ namespace ParallelTasks.Unit.Test
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        [InlineData(50)]
+        [InlineData(8)]
         public async Task InvokeListTasksValidTimeExecutionForParallelInteration(int loopCounter)
         {
             // Act
@@ -35,7 +35,7 @@ namespace ParallelTasks.Unit.Test
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        [InlineData(50)]
+        [InlineData(8)]
         public void InvokeSyncLoopValidTimeExecutionForSyncInteration(int loopCounter)
         {
             // Act
