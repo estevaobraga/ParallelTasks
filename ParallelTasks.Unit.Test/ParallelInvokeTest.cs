@@ -7,10 +7,8 @@ namespace ParallelTasks.Unit.Test
     public class ParallelInvokeTest
     {
         [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(8)]
-        public async Task InvokeParallelTasksValidTimeExecutionForPrallelInteration(int loopCounter)
+        [InlineData(10)]
+        public async Task InvokeParallelTasksValidTimeExecutionToPrallelForInteration(int loopCounter)
         {
             // Act
             await ParallelInvoke.InvokeParallelFor(loopCounter);
@@ -20,10 +18,8 @@ namespace ParallelTasks.Unit.Test
         }
 
         [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(8)]
-        public async Task InvokeListTasksValidTimeExecutionForParallelInteration(int loopCounter)
+        [InlineData(10)]
+        public async Task InvokeListTasksValidTimeExecutionToParallelInteration(int loopCounter)
         {
             // Act
             await ParallelInvoke.InvokeListTasks(loopCounter);
@@ -33,13 +29,11 @@ namespace ParallelTasks.Unit.Test
         }
         
         [Theory]
-        [InlineData(1)]
-        [InlineData(2)]
-        [InlineData(8)]
-        public void InvokeSyncLoopValidTimeExecutionForSyncInteration(int loopCounter)
+        [InlineData(10)]
+        public async Task InvokeSyncLoopValidTimeExecutionToSyncInteration(int loopCounter)
         {
             // Act
-            ParallelInvoke.InvokeSyncLoop(loopCounter);
+            await ParallelInvoke.InvokeSyncLoop(loopCounter);
             
             // Assert
             

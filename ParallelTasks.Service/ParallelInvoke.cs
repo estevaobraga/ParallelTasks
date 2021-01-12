@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using ParallelTasks.Domain;
 
 namespace ParallelTasks.Service
 {
     public static class ParallelInvoke
     {
+        private static int waitingTime = 1000;
+
         public static async Task InvokeParallelFor(int loopCounter)
         {
-            Parallel.For(0, loopCounter, (int index) =>
+            await Task.Factory.StartNew(() =>
             {
-                Calculator.CalculateInterest();
+                Parallel.For(0, loopCounter, async (int index) =>
+                {
+                    await Task.Factory.StartNew(() => { Thread.Sleep(waitingTime); });
+                });
             });
         }
 
@@ -20,20 +25,22 @@ namespace ParallelTasks.Service
 
             for (int i = 0; i < loopCounter; i++)
             {
-                Task task = new Task(() => Calculator.CalculateInterest());
-                task.Start();
+                Task task = Task.Factory.StartNew(() => { Thread.Sleep(waitingTime); });
                 tasks.Add(task);
             }
 
-            Task.WaitAll(tasks.ToArray());
+            await Task.WhenAll(tasks);
         }
 
-        public static void InvokeSyncLoop(int loopCounter)
+        public static async Task InvokeSyncLoop(int loopCounter)
         {
-            for (int i = 0; i < loopCounter; i++)
+            await Task.Factory.StartNew(() =>
             {
-                var asdf = Calculator.CalculateInterest();
-            }
+                for (int i = 0; i < loopCounter; i++)
+                {
+                    Thread.Sleep(waitingTime);
+                }
+            });
         }
     }
 }
