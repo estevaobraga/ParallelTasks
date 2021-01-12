@@ -5,8 +5,6 @@ Example of parallel tasks execution with .Net Core 3.1 - ParallelFor x ListTaskF
   <a href="https://github.com/estevaobraga/ParallelTasks"><img alt="GitHub Actions status" src="https://github.com/estevaobraga/ParallelTasks/workflows/.NET%20Core/badge.svg"></a>
 </p>
 
-![alt text](badges/result.png)
-
 ## Result:
 
 - Rank
@@ -18,3 +16,5 @@ Example of parallel tasks execution with .Net Core 3.1 - ParallelFor x ListTaskF
   - loopCounter = 10 tasks
   - waitingTime = 1000 ms  
   10 tasks with waiting time of 1 second  
+
+  ![xUnit Result](badges/result.png)
